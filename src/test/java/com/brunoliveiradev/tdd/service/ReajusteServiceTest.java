@@ -13,9 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReajusteServiceTest {
 
-    @BeforeEach
-
-
     @Test
     @DisplayName("Reajuste Deveria ser 3% para Desempenho a Desenvolver")
     void reajusteDeveriaSerDeTresPorcentoQuandoDesempenhoADesejar(){
