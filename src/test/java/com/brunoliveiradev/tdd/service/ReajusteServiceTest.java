@@ -13,12 +13,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReajusteServiceTest {
 
+    private ReajusteService service;
+    private Funcionario funcionario;
+
+    @BeforeEach
+    public void criarDependencias() {
+        this.service = new ReajusteService();
+        this.funcionario = new Funcionario("Ana", LocalDate.now(), new BigDecimal("1000.00"));
+    }
+
     @Test
     @DisplayName("Reajuste Deveria ser 3% para Desempenho a Desenvolver")
     void reajusteDeveriaSerDeTresPorcentoQuandoDesempenhoADesejar(){
-        ReajusteService service = new ReajusteService();
-        Funcionario funcionario = new Funcionario("Ana", LocalDate.now(), new BigDecimal("1000.00"));
-
         service.reajustarSalario(funcionario, Desempenho.DESENVOLVER);
 
         assertEquals(new BigDecimal("1030.00"), funcionario.getSalario());
@@ -27,9 +33,6 @@ class ReajusteServiceTest {
     @Test
     @DisplayName("Reajuste Deveria ser 15% para Desempenho Bom")
     void reajusteDeveriaSerQuinzePorcentoQuandoDesempenhoForBom(){
-        ReajusteService service = new ReajusteService();
-        Funcionario funcionario = new Funcionario("Ana", LocalDate.now(), new BigDecimal("1000.00"));
-
         service.reajustarSalario(funcionario, Desempenho.BOM);
 
         assertEquals(new BigDecimal("1150.00"), funcionario.getSalario());
@@ -38,9 +41,6 @@ class ReajusteServiceTest {
     @Test
     @DisplayName("Reajuste deveria ser 20% para Desempenho Excelente")
     void reajusteDeveriaSerDeVintePorcentoQuandoDesempenhoForExcelente(){
-        ReajusteService service = new ReajusteService();
-        Funcionario funcionario = new Funcionario("Ana", LocalDate.now(), new BigDecimal("1000.00"));
-
         service.reajustarSalario(funcionario, Desempenho.EXCELENTE);
 
         assertEquals(new BigDecimal("1200.00"), funcionario.getSalario());
