@@ -33,6 +33,11 @@ public class Funcionario {
 	}
 
 	public void ajusteSalarial(BigDecimal reajuste) {
-		setSalario(this.salario.add(reajuste).setScale(2, RoundingMode.HALF_UP ));
+		setSalario(this.salario.add(reajuste));
+		arredondarSalario();
     }
+
+    private void arredondarSalario(){
+		setSalario(this.salario.setScale(2, RoundingMode.HALF_UP ));
+	}
 }
